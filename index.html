@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-family: Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgb(228, 215, 206);
+            padding: 1rem;
+        }
+
+        nav {
+            display: flex;
+            gap: 1rem;
+        }
+
+        nav a {
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            text-decoration: none;
+            color: black;
+        }
+
+        nav a:hover {
+            color: rgb(116, 77, 52);
+        }
+
+        main {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem;
+        }
+
+        section {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            padding: 1rem;
+            gap: 2rem;
+        }
+
+        aside {
+            display: flex;
+            flex-direction: column;
+            max-width: 300px; /* or whatever size you want */
+            background:rgb(228, 215, 206);
+            padding: 1rem;
+            gap: 1rem;
+        }
+
+        h2 {
+            margin-bottom: 0.8rem;
+        }
+
+        footer {
+            width: 100%;
+            padding: 1rem;
+            background:rgb(228, 215, 206);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <span>Site Title</span>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+    
+    <main>
+        <section>
+            <h1>Left Column</h1>
+            <group>
+                <h2>Sub Topic</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum dicta nobis inventore fugiat molestiae maiores dolor, quia aspernatur unde sed aliquid omnis? Et, ab sed iure repellendus molestias aliquid ea. Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum dicta nobis inventore fugiat molestiae maiores dolor, quia aspernatur unde sed aliquid omnis? Et, ab sed iure repellendus molestias aliquid ea</p>
+            </group>
+            <group>
+                <h2>Sub Topic</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum dicta nobis inventore fugiat molestiae maiores dolor, quia aspernatur unde sed aliquid omnis? Et, ab sed iure repellendus molestias aliquid ea. Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum dicta nobis inventore fugiat molestiae maiores dolor, quia aspernatur unde sed aliquid omnis? Et, ab sed iure repellendus molestias aliquid ea.</p>
+            </group>
+            <group>
+                <h2>Sub Topic</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum dicta nobis inventore fugiat molestiae maiores dolor, quia aspernatur unde sed aliquid omnis? Et, ab sed iure repellendus molestias aliquid ea. Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum dicta nobis inventore fugiat molestiae maiores dolor, quia aspernatur unde sed aliquid omnis? Et, ab sed iure repellendus molestias aliquid ea.</p>
+            </group>
+            <group>
+                <h2>Sub Topic</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum dicta nobis inventore fugiat molestiae maiores dolor, quia aspernatur unde sed aliquid omnis? Et, ab sed iure repellendus molestias aliquid ea. Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum dicta nobis inventore fugiat molestiae maiores dolor, quia aspernatur unde sed aliquid omnis? Et, ab sed iure repellendus molestias aliquid ea.</p>
+            </group>
+        </section>
+    
+        <aside>
+            <h1>Right Column</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum dicta nobis inventore fugiat molestiae maiores dolor, quia aspernatur unde sed aliquid omnis? Et, ab sed iure repellendus molestias aliquid ea.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum dicta nobis inventore fugiat molestiae maiores dolor, quia aspernatur unde sed aliquid omnis? Et, ab sed iure repellendus molestias aliquid ea. Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum dicta nobis inventore fugiat molestiae maiores dolor, quia aspernatur unde sed aliquid omnis? Et, ab sed iure repellendus molestias aliquid ea.</p>
+        </aside>
+    </main>
+    
+    <footer>
+        <p>Footer content...</p>
+    </footer>
+    </body>
+    
+    </html>
