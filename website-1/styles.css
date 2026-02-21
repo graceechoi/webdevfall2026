@@ -1,0 +1,305 @@
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+    font-family: "azo-mono", Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#logo {
+    margin-left: 2rem;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    padding: .5rem 0;
+    align-self: flex-start;
+    z-index: 1000;
+    background: white;
+}
+
+header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgb(241, 241, 241);
+    padding: .5rem;
+    margin: 1rem;
+    border: 1px solid black;
+    border-radius: 2rem;
+}
+
+header span {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
+    justify-content: right;
+    padding: .5rem;
+}
+
+button {
+    border: none;
+    background: none;
+}
+
+button:hover {
+    color: rgb(100, 100, 100);
+}
+
+.send {
+    background: rgb(225, 225, 225);
+    border-radius: 1rem;
+    padding: .3rem;
+    margin: .7rem;
+}
+
+.controls {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 50%;
+}
+
+.music-player-small {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 230px;
+    background:rgb(225, 225, 225);
+    padding: .8rem;
+    border-radius: 1.5rem;
+    gap: .2rem;
+}
+
+.music-player-small img {
+    width: 50px;
+    height: 50px;
+    border-radius: .3rem;
+}
+
+.music-player-small div {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem
+}
+
+.music-player-small div div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: .1rem;
+}
+
+.music-player-full {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 240px;
+    background:rgb(225, 225, 225);
+    padding: .7rem;
+    border-radius: 1.5rem;
+    gap: .2rem;
+}
+
+.music-player-full img {
+    width: 200px;
+    height: 200px;
+    border-radius: .3rem;
+    margin: .5rem;
+}
+
+.music-player-full div div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: .1rem;
+    align-items: center;
+    text-align: center;
+}
+
+.music-text {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+.sidebyside {
+    display: flex;
+    justify-content: space-between;
+    width: 500px;
+}
+
+a {
+    font-size: 0.9rem;
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    color: rgb(100, 100, 100);
+}
+
+.song {
+    font-family: "monotalic";
+    font-weight: bold;
+    font-size: 12pt;
+}
+
+.artist {
+    font-size: 10pt;
+}
+
+.section {
+    scroll-margin-top: 220px;
+}
+
+.section p {
+    line-height: 1.2rem;
+}
+.tag {
+    display: inline;
+    font-size: 9pt;
+    background: rgb(225, 225, 225);
+    padding: .5rem;
+    border-radius: 1rem;
+    line-height: 3rem;
+}
+
+.tags {
+    margin-bottom: .4rem;
+}
+
+main {
+    display: flex;
+    gap: 1rem;
+    padding: 0 1rem;
+    width: 100%;
+}
+
+p {
+    font-size: 10pt;
+    margin-top: .5rem;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 1rem;
+    gap: 2rem;
+}
+
+aside {
+    display: flex;
+    flex-direction: column;
+    width: 330px;
+    flex-shrink: 0;
+    gap: 1rem;
+    position: sticky;
+    top: 14rem;
+    align-self: flex-start;
+}
+
+aside div {
+    display: flex;
+    flex-direction: column;
+    background:rgb(241, 241, 241);
+    border: black solid 1pt;
+    border-radius: 2rem;
+    padding: 1.5rem;
+    gap: 1rem;
+}
+
+
+aside li {
+    list-style: none;
+    margin: .7rem;
+    text-align: center;
+    background: rgb(225, 225, 225);
+    padding: .3rem;
+    border-radius: 20pt;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    font-size: 10pt;
+}
+
+form span {
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+form input {
+    padding: .2rem;
+    width: 150px;
+}
+
+h1 {
+    font-family: "monotalic";
+    font-size: 18pt;
+}
+
+h2 {
+    font-family: "azo-mono";
+    font-size: 12pt;
+    font-style: italic;
+    margin-top: .7rem;
+}
+
+footer {
+    width: 100%;
+    padding: 1rem;
+    text-align: center;
+    color: rgb(151, 151, 151);
+}
+
+footer p {
+    font-size: 10pt;
+}
+
+@media (max-width: 1000px) {
+    main {
+        flex-direction: column;
+    }
+    aside {
+        width: 100%;
+        position: static;
+    }
+    .music-text {
+        flex-direction: column;
+        gap: .5rem;
+    }
+
+}
+
+
+table {
+  width: 100%;
+  table-layout: fixed;
+}
+
+th:first-child,
+td:first-child {
+  width: 160pt;
+}
+
+td {
+    font-size: 9pt;
+    padding: 0.7rem 0;
+}
+
+th {
+    padding: .7rem;
+    border-bottom: 1px solid #ddd;
+}
