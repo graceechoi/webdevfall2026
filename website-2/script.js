@@ -21,6 +21,7 @@ let switchCount = 0;
 let timer;
 let quoteTimer;
 let currentBreed = '';
+let activeTheme = 'green';
 let isPaused = false;
 let quoteIndex = 0;
 let currentSessionHistory = [];
@@ -44,12 +45,15 @@ const dogMessages = [
 
 // Theme management
 function loadTheme() {
-    const savedTheme = localStorage.getItem('selectedTheme') || 'blue';
-    document.body.setAttribute('data-theme', savedTheme);
-    updateColorBtnStates(savedTheme);
+    const savedTheme = localStorage.getItem('selectedTheme');
+    const initialTheme = savedTheme || document.body.getAttribute('data-theme') || 'green';
+    activeTheme = initialTheme;
+    document.body.setAttribute('data-theme', initialTheme);
+    updateColorBtnStates(initialTheme);
 }
 
 function saveTheme(theme) {
+    activeTheme = theme;
     localStorage.setItem('selectedTheme', theme);
     document.body.setAttribute('data-theme', theme);
     updateColorBtnStates(theme);
