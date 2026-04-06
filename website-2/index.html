@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Focus Pup</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div id="color-selector">
+            <button class="color-btn" data-theme="green" title="green theme" style="background: #d8d8ac;"></button>
+            <button class="color-btn" data-theme="warm" title="warm theme" style="background: linear-gradient(45deg, #ffbdb4 0%, #fad5bb 50%, #ffcc85 100%)"></button>
+            <button class="color-btn" data-theme="cool" title="cool theme" style="background: linear-gradient(45deg, #f5e6ff 0%, #e8d5ff 50%, #f0e6ff 100%)"></button>
+        </div>
+        <h1>Focus Pup</h1>
+        <h2>Adopt a puppy buddy to stay on task!</h2>
+    </header>
+    <main>
+        <div id="picker-area">
+            <p>What dog breed?</p>
+            <select id="breed-select">
+                <option value="">Select breed</option>
+            </select>
+            <button id="choose-btn">ADOPT</button>
+        </div>
+        <div id="buddy-area" style="display: none;">
+            <img id="dog-image" alt="Your focus buddy">
+            <div id="message"></div>
+            <div id="stats">
+                <p>Time Focused: <span id="focus-time">0</span></p>
+                <p>Tab Switches: <span id="switch-count">0</span></p>
+            </div>
+            <button id="pause-btn">Pause</button>
+            <button id="change-dog-btn">Change Image</button>
+            <button id="back-btn">New Session</button>
+        </div>
+    </main>
+    <button id="stats-peek-btn" title="View all-time stats">Stats</button>
+    <div id="stats-panel">
+        <button id="close-stats-btn">✕</button>
+        <h3>Today's Stats</h3>
+        <div id="stats-content">
+            <p><strong>Total Focus Time:</strong> <span id="total-focus">0</span></p>
+            <p><strong>Total Tab Switches:</strong> <span id="total-switches">0</span></p>
+            <p><strong>Favorite Breed:</strong> <span id="favorite-breed">None yet</span></p>
+            <p><strong>Sessions Completed:</strong> <span id="session-count">0</span></p>
+        </div>
+        <h3 style="margin-top: 30px;">Session History</h3>
+        <div id="session-history-list">
+            <p style="text-align: center; color: var(--primary-light);">No sessions yet</p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
