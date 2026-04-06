@@ -117,12 +117,11 @@ function saveSessionData() {
     currentSessionHistory.push(sessionData);
 }
 
-function getFavoriteBreed() {
-    const allStats = loadAllTimeStats();
-    if (allStats.sessions.length === 0) return 'None yet';
+function getCurrentFavoriteBreed() {
+    if (currentSessionHistory.length === 0) return 'None yet';
     
     const breedCount = {};
-    allStats.sessions.forEach(session => {
+    currentSessionHistory.forEach(session => {
         breedCount[session.breed] = (breedCount[session.breed] || 0) + 1;
     });
     
@@ -138,11 +137,13 @@ function getFavoriteBreed() {
 }
 
 function updateStatsPanel() {
-    const allStats = loadAllTimeStats();
-    document.getElementById('total-focus').textContent = formatTime(allStats.totalFocusTime);
-    document.getElementById('total-switches').textContent = allStats.totalSwitches;
-    document.getElementById('favorite-breed').textContent = getFavoriteBreed();
-    document.getElementById('session-count').textContent = allStats.sessions.length;
+    const totalFocus = currentSessionHistory.reduce((sum, session) => sum + session.focusTime, focusTime);
+    const totalSwitches = currentSessionHistory.reduce((sum, session) => sum + session.switches, switchCount);
+
+    document.getElementById('total-focus').textContent = formatTime(totalFocus);
+    document.getElementById('total-switches').textContent = totalSwitches;
+    document.getElementById('favorite-breed').textContent = getCurrentFavoriteBreed();
+    document.getElementById('session-count').textContent = currentSessionHistory.length;
     updateSessionHistoryDisplay();
 }
 
@@ -157,8 +158,7 @@ function updateSessionHistoryDisplay() {
     historyList.innerHTML = currentSessionHistory.map((session, index) => `
         <div style="padding: 12px; background: rgba(255, 255, 255, 0.6); border-radius: 8px; border-left: 4px solid var(--accent); margin-bottom: 10px;">
             <p style="margin: 5px 0; font-size: 0.9rem; text-transform: capitalize;"><strong>${session.breed}</strong></p>
-            <p style="margin: 5px 0; font-size: 0.9rem;">Focus: ${formatTime(session.focusTime)}</p>
-            <p style="margin: 5px 0; font-size: 0.9rem;">Tab Switches: ${session.switches}</p>
+            <p style="margin: 5px 0; font-size: 0.9rem;">${formatTime(session.focusTime)} <strong>•</strong> ${session.switches} tab switches</p>
         </div>
     `).join('');
 }
@@ -192,6 +192,7 @@ async function fetchDogImage(breed) {
         const response = await fetch(`https://dog.ceo/api/breed/${breed}/images/random`);
         const data = await response.json();
         dogImage.src = data.message;
+        console.log('Dog image fetched:', data.message);
     } catch (error) {
         console.error('Error fetching dog image:', error);
     }
@@ -274,8 +275,6 @@ chooseBtn.addEventListener('click', () => {
         messageDiv.textContent = `Woof! Let's stay focused together!`;
         // Keep stats visible in buddy mode.
         updateStatsDisplay();
-        // Request notifications again on user interaction if needed
-        requestNotificationPermission();
         // Start quote timer if not already running
         if (!quoteTimer) {
             startQuoteTimer();
@@ -351,6 +350,8 @@ document.addEventListener('click', (e) => {
 });
 
 // Initialize
+localStorage.removeItem('focusTime');
+localStorage.removeItem('switchCount');
 loadTheme();
 fetchBreeds();
 requestNotificationPermission();
