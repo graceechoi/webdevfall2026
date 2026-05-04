@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>grace's digital garden</title>
+    <title>home | grace's digital garden</title>
     <link rel="stylesheet" href="https://use.typekit.net/qak1mfi.css">
     <script src="https://kit.fontawesome.com/5c8b38fe1c.js" crossorigin="anonymous"></script>
     <link href="css/styles.css" rel="stylesheet">
@@ -13,31 +13,36 @@
 <body>
     <header>
         <nav>
-            <a href="" class="logo"><img src="img/icon-iteration-4.png"></a>
+            <a href="index.html" class="logo pulse"><img src="img/icon-iteration-4.png"></a>
             <ul>
-                <li class="nav-music"><a href=""><i class="fa-solid fa-headphones"></i></a></li>
-                <li class="nav-knit"><a href=""><img src="img/noun-skein-5833810.svg"></a></li>
-                <li class="nav-food"><a href=""><i class="fa-solid fa-utensils"></i></a></li>
-                <li class="nav-travel"><a href=""><i class="fa-solid fa-plane"></i></a></li>
-                <li class="nav-watch"><a href=""><i class="fa-solid fa-film"></i></a></li>
+                <li class="nav-music"><a href="music.html" class="nav-link"><i class="fa-solid fa-headphones"></i><span
+                            class="nav-label">music</span></a></li>
+                <li class="nav-yarn"><a href="yarn.html" class="nav-link"><img src="img/noun-skein-5833810.svg"
+                            class="yarn-icon"><span class="nav-label">yarn</span></a></li>
+                <li class="nav-food"><a href="food.html" class="nav-link"><i class="fa-solid fa-utensils"></i><span
+                            class="nav-label">food</span></a></li>
+                <li class="nav-travel"><a href="travel.html" class="nav-link"><i class="fa-solid fa-plane"></i><span
+                            class="nav-label">travel</span></a></li>
+                <li class="nav-watch"><a href="watch.html" class="nav-link"><i class="fa-solid fa-film"></i><span
+                            class="nav-label">watch</span></a></li>
             </ul>
         </nav>
     </header>
     <main>
         <div class="intro">
-            <h1>Hi, I'm Grace!</h1>
+            <h1>hi, i'm grace!</h1>
             <h2>
-                Welcome to my digital garden where I record anything and everything :)
+                welcome to my digital garden where I record anything and everything in my life :)
             </h2>
         </div>
         <div class="currently section">
             <h3>currently.</h3>
             <ul>
-                <li class="countdown">
-                    <div class="flip-card-wrapper" data-target="2026-05-15T09:00:00">
+                <li class="countdown peach">
+                    <div class="flip-card-wrapper">
                         <div class="flip-card">
                             <div class="card-top">
-                                <span class="day-number">00</span>
+                                <span class="day-number grad-day">00</span>
                             </div>
                             <div class="card-bottom static">
                                 <span class="flip-text">until graduation</span>
@@ -52,50 +57,151 @@
                             </div>
                         </div>
                     </div>
+                    <div class="flip-card-wrapper">
+                        <div class="flip-card">
+                            <div class="card-top">
+                                <span class="day-number concert-day">00</span>
+                            </div>
+                            <div class="card-bottom static">
+                                <span class="flip-text">until BTS concert</span>
+                            </div>
+                            <div class="card-bottom-flip">
+                                <div class="flip-face front">
+                                    <span class="card-label">days</span>
+                                </div>
+                                <div class="flip-face back">
+                                    <i class="fa-solid fa-graduation-cap"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </li>
-                <li class="spotify">
-                    <p>last played</p>
-                    <p class="song"></p>
-                    <p class="artist"></p>
+                <li class="spotify card bottom-left music">
+                    <button id="loginBtn" type="button">Login</button>
+                    <i class="fa-brands fa-spotify"></i>
+                    <p class="caption1">last played</p>
+                    <a id="track" class="track" target="_blank"></a>
+                    <a id="artist" class="artist" target="_blank"></a>
+                    <div class="sliding-panel">
+                        <p class="caption1">on repeat</p>
+                        <p class="track-small">Crush • <span class="artist-small">NCT Wish</span></p>
+                    </div>
                 </li>
-                <li class="knitting">
-                    <p>knitting project</p>
-                    <p>mulberry silk mohair fog cardigan</p>
-                    <p>pattern from banul</p>
+                <li class="location bottom-left peach">
+                    <div id="weather-icon" class="weather-icon"></div>
+                    <div class="weather-info">
+                        <p id="weather-temp">--°</p>
+                        <p id="weather-condition">Loading weather...</p>
+                    </div>
+                    <p class="caption3"><i class="fa-solid fa-location-dot"></i> St. Louis, MO</p>
                 </li>
-                <li class="location">
-                    <p>St. Louis, MO</p>
+                <li class="card yarn space-btwn">
+                    <a href="yarn.html" class="label nav-link"><img src="img/noun-skein-5833810.svg"
+                            class="yarn-icon"><span class="nav-label">yarn</span></a>
+                    <div>
+                        <p class="caption1">started sept 14, 2025 • knit</p>
+                        <p class="caption2">mulberry silk mohair fog cardigan</p>
+                        <p class="caption3">pattern from banul</p>
+                        <div class="sliding-panel">
+                            <p class="caption1">this is taking me forever...</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="card watch space-btwn">
+                    <a href="watch.html" class="label nav-link"><i class="fa-solid fa-film"></i><span class="nav-label">watch</span></a>
+                    <div>
+                        <p class="caption1">finished ep. 6 • drama</p>
+                        <p class="caption2">yumi's cells S3</p>
+                        <div class="sliding-panel">
+                            <p class="caption1"><em>wow i love shin soon rok</em></p>
+                        </div>
+                    </div>
                 </li>
             </ul>
         </div>
         <div class="recents section">
             <h3>recents.</h3>
             <ul>
-                <li class="countdown">
-                    <p class="days">D-i5</p>
-                    <p class="caption1">until graduation</p>
+                <li class="card watch space-btwn">
+                    <a href="watch.html" class="label nav-link"><i class="fa-solid fa-film"></i><span class="nav-label">watch</span></a>
+                    <div>
+                        <p class="caption1">april 29, 2026 • movie</p>
+                        <p class="caption2">once we were us</p>
+                        <p class="caption3">w/ minjung, jace, alicia</p>
+                        <div class="sliding-panel">
+                            <p class="caption1">it would have been better as a drama series...</p>
+                        </div>
+                    </div>
                 </li>
-                <li class="spotify">
-                    <p>last played</p>
-                    <p class="song"></p>
-                    <p class="artist"></p>
+                <li class="music card space-btwn">
+                    <a href="music.html" class="label nav-link"><i class="fa-solid fa-headphones"></i><span class="nav-label">music</span></a>
+                    <div>
+                        <p class="caption1">april 29, 2026</p>
+                        <p class="caption2">childish</p>
+                        <p class="caption3">LUCY</p>
+                        <div class="sliding-panel">
+                            <p class="caption1">reminded me why i liked LUCY</p>
+                            <p class="caption3"><i class="fa-solid fa-heart"></i> song: Sprout, All Ages</p>
+                        </div>
+                    </div>
                 </li>
-                <li class="knitting">
-                    <p>knitting project</p>
-                    <p>mulberry silk mohair fog cardigan</p>
-                    <p>pattern from banul</p>
+                <li class="card food space-btwn">
+                    <a href="food.html" class="label nav-link"><i class="fa-solid fa-utensils"></i><span class="nav-label">food</span></a>
+                    <div>
+                        <p class="caption1">april 28, 2026 • matcha</p>
+                        <p class="caption2">strawberry banana matcha latte</p>
+                        <p class="caption3"><i class="fa-solid fa-location-dot"></i> kaldi's coffee</p>
+                        <div class="sliding-panel">
+                            <p class="caption1">tasted like banana pudding (where's the strawberry?)</p>
+                        </div>
+                    </div>
                 </li>
-                <li class="location">
-                    <p>St. Louis, MO</p>
+                <li class="card watch space-btwn">
+                    <a href="watch.html" class="label nav-link"><i class="fa-solid fa-film"></i><span class="nav-label">watch</span></a>
+                    <div>
+                        <p class="caption1">april 24, 2026 • drama</p>
+                        <p class="caption2">can this love be translated?</p>
+                        <div class="sliding-panel">
+                            <p class="caption1">took me so long to finish but pushed through for kim seonho</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="card food space-btwn">
+                    <a href="food.html" class="label nav-link"><i class="fa-solid fa-utensils"></i><span class="nav-label">food</span></a>
+                    <div>
+                        <p class="caption1">april 11, 2026 • tea</p>
+                        <p class="caption2">moon goddess (ube london fog)</p>
+                        <p class="caption3"><i class="fa-solid fa-location-dot"></i> fiddlehead fern cafe</p>
+                        <div class="sliding-panel">
+                            <p class="caption1">whoever thought of combining ube and london fog is a genius</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="card watch space-btwn">
+                    <a href="watch.html" class="label nav-link"><i class="fa-solid fa-film"></i><span class="nav-label">watch</span></a>
+                    <div>
+                        <p class="caption1">april 3, 2026 • movie</p>
+                        <p class="caption2">project hail mary</p>
+                        <p class="caption3">w/ minjung, jace, alicia @ theater</p>
+                        <div class="sliding-panel">
+                            <p class="caption1">rocky and ryland best duo &lt;3</p>
+                        </div>
+                    </div>
                 </li>
             </ul>
         </div>
-
     </main>
-    <footer>
 
+    <footer>
+        <div class="social-icons">
+            <a href="https://open.spotify.com/user/gracehchoi03?si=a079d031609641a8" class="hover-peach"><i
+                    class="fa-brands fa-spotify"></i></a>
+            <a href="https://boxd.it/kob3T" class="hover-peach"><i class="fa-brands fa-letterboxd"></i></a>
+            <a href="https://beliapp.co/app/grcechoi" class="beli-logo hover-peach">beli</a>
+        </div>
+        <p class="credits">planted by grace • last updated may 4, 2026</p>
     </footer>
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </body>
 
 </html>

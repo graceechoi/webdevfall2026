@@ -1,52 +1,106 @@
 document.addEventListener('DOMContentLoaded', function () {
-  const cardWrapper = document.querySelector('.flip-card-wrapper');
-  if (!cardWrapper) return;
+    const dayNumberGrad = document.querySelector('.grad-day');
+    const dayNumberConcert = document.querySelector('.concert-day');
+    if (!dayNumberGrad || !dayNumberConcert) return;
 
-  const targetDate = new Date('2026-05-15T09:00:00');
-  const dayNumber = cardWrapper.querySelector('.day-number');
+    const targetDateGrad = new Date('2026-05-15T09:00:00');
+    const targetDateConcert = new Date('2026-05-17T19:00:00');
 
-  function getDaysUntil() {
-    const now = new Date();
-    const diff = Math.max(0, targetDate - now);
-    return Math.max(0, Math.ceil(diff / 86400000));
-  }
+    function getDaysUntil(event) {
+        const now = new Date();
+        const diff = Math.max(0, event - now);
+        return Math.max(0, Math.ceil(diff / 86400000));
+    }
 
-  function render() {
-    dayNumber.textContent = getDaysUntil();
-  }
+    function renderCountdowns() {
+        dayNumberGrad.textContent = getDaysUntil(targetDateGrad);
+        dayNumberConcert.textContent = getDaysUntil(targetDateConcert);
+    }
 
-  render();
-  setInterval(render, 60 * 1000);
+    renderCountdowns();
+    setInterval(renderCountdowns, 60 * 1000);
+
+    fetchStLouisWeather();
+
+    async function fetchStLouisWeather() {
+        const weatherIcon = document.getElementById('weather-icon');
+        const weatherTemp = document.getElementById('weather-temp');
+        const weatherCondition = document.getElementById('weather-condition');
+
+        function setWeatherText(temp, description, iconUrl) {
+            weatherTemp.textContent = temp ? `${Math.round(temp)}°` : '--°';
+            weatherCondition.textContent = description || 'Weather unavailable';
+            if (iconUrl) {
+                weatherIcon.innerHTML = `<img src="${iconUrl}" alt="${description || 'weather icon'}" />`;
+            } else {
+                weatherIcon.innerHTML = '';
+            }
+        }
+
+        try {
+            const geoRes = await fetch('https://cse2004.com/api/geocode?address=St+Louis');
+            const geoData = await geoRes.json();
+            const location = geoData?.results?.[0]?.geometry?.location;
+            const latitude = location?.lat;
+            const longitude = location?.lng;
+            if (latitude == null || longitude == null) {
+                throw new Error('Unable to parse coordinates');
+            }
+
+            const weatherRes = await fetch(`https://cse2004.com/api/weather?latitude=${latitude}&longitude=${longitude}`);
+            const weatherData = await weatherRes.json();
+
+            const temp = weatherData?.temperature?.degrees ?? weatherData?.current?.temperature?.degrees ?? weatherData?.current?.temperature;
+            const condition = weatherData?.weatherCondition?.description?.text ?? weatherData?.current?.weatherCondition?.description?.text ?? weatherData?.current?.condition ?? weatherData?.condition;
+            const iconBase = weatherData?.weatherCondition?.iconBaseUri ?? weatherData?.current?.weatherCondition?.iconBaseUri ?? weatherData?.current?.iconBaseUri;
+            const icon = iconBase ? `${iconBase}.png` : null;
+
+            setWeatherText(temp, condition, icon);
+        } catch (error) {
+            console.error('Weather fetch failed:', error);
+            weatherTemp.textContent = '--°';
+            weatherCondition.textContent = 'Weather unavailable';
+            weatherIcon.innerHTML = '';
+        }
+    }
 });
 
-/***********************
- * CONFIG
- ***********************/
-const clientId = "94c4276f63b1422da549e351e5991b6e";
-const clientSecret = "fc877cf7de63444caee87de03a2d347d";
-const redirectUri = "http://127.0.0.1:3000";
-const scope = "user-read-recently-played";
+document.addEventListener("DOMContentLoaded", () => {
 
-const code = "AQAgLNnDI07Z6hVFjQcHADaBZSvznOxPbkDdyMR975T-B7RqGIHaBlHvX717XGaeHIS5YRPdmP8NUjDwePhAyEa4vicjfBmvHsmdOOOuJwkXzJjUz1SGTNyjxlFO1g6VNR_FFK0XctTKEkpbAeWS6ecgf3XmGz1wC0361CftzVMj-IUX0XRhupFqhsvFV2QCCXN1EQ";
+    const loginBtn = document.getElementById("loginBtn");
 
-async function run() {
-  const res = await fetch("https://accounts.spotify.com/api/token", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
-      "Authorization": "Basic " + btoa(clientId + ":" + clientSecret)
-    },
-    body: new URLSearchParams({
-      grant_type: "authorization_code",
-      code,
-      redirect_uri: redirectUri
-    })
-  });
+    if (loginBtn) {
+        loginBtn.addEventListener("click", (e) => {
+            e.preventDefault();
 
-  const data = await res.json();
+            console.log("LOGIN CLICKED");
 
-  console.log("SAVE THIS REFRESH TOKEN:");
-  console.log(data.refresh_token);
+            window.location.href = "http://127.0.0.1:4000/login";
+        });
+    }
+
+    loginBtn.style.display = "none";
+    loadTrack();
+});
+
+async function loadTrack() {
+    const refreshToken = localStorage.getItem("refresh_token");
+    if (!refreshToken) return;
+
+
+    const res = await fetch("/last-played", {
+        headers: {
+            "x-refresh-token": refreshToken,
+        },
+    });
+
+    const data = await res.json();
+
+    // text
+    document.getElementById("track").textContent = data.track;
+    document.getElementById("artist").textContent = data.artist;
+
+    document.getElementById("track").href = data.url;
+    document.getElementById("artist").href = data.url;
+
 }
-
-run();
