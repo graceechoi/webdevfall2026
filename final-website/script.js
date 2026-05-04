@@ -1,3 +1,10 @@
+const params = new URLSearchParams(window.location.search);
+const token = params.get("refresh_token");
+
+if (token) {
+  localStorage.setItem("refresh_token", token);
+}
+
 document.addEventListener('DOMContentLoaded', function () {
     const dayNumberGrad = document.querySelector('.grad-day');
     const dayNumberConcert = document.querySelector('.concert-day');
@@ -75,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             console.log("LOGIN CLICKED");
 
-            window.location.href = "http://127.0.0.1:4000/login";
+            window.location.href = "https://webdevfall2026.vercel.app/api/login";
         });
     }
 
@@ -87,8 +94,7 @@ async function loadTrack() {
     const refreshToken = localStorage.getItem("refresh_token");
     if (!refreshToken) return;
 
-
-    const res = await fetch("/last-played", {
+    const res = await fetch("https://webdevfall2026.vercel.app/api/last-played", {
         headers: {
             "x-refresh-token": refreshToken,
         },
@@ -96,11 +102,9 @@ async function loadTrack() {
 
     const data = await res.json();
 
-    // text
     document.getElementById("track").textContent = data.track;
     document.getElementById("artist").textContent = data.artist;
 
     document.getElementById("track").href = data.url;
     document.getElementById("artist").href = data.url;
-
 }
